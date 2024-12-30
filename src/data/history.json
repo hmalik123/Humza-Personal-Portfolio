@@ -1,0 +1,29 @@
+[
+  {
+    "role": "Computer Science Student",
+    "organisation": "Brunel University London",
+    "startDate": "Sept, 2019",
+    "endDate": "Sept, 2022",
+    "experiences": ["Web development", "Data structures and algorithms", "Machine learning"],
+    "imageSrc": "history/brunel.png"
+  },
+  {
+    "role": "Junior Java Developer",
+    "organisation": "Sparta Global",
+    "startDate": "Jan, 2023",
+    "endDate": "June, 2023",
+    "experiences": ["Java Backend using Springboot", "Fron-end Javascript, HTML, CSS", "Weekly programming exams to be client ready"],
+    "imageSrc": "history/Sparta Global.png"
+  },
+  {
+    "role": "Software Engineer",
+    "organisation": "Energus (Graduate Scheme with Rolls-Royce)",
+    "startDate": "Sept, 2023",
+    "endDate": "ongoing",
+    "experiences": [
+      "Worked on component library",
+      "Helped create UI components"
+    ],
+    "imageSrc": "history/Rolls Royce.png"
+  }
+]
