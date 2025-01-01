@@ -1,11 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  /* Stack content vertically */
   align-items: flex-start;
-  /* Align everything to the left */
   justify-content: flex-start;
-  /* Push content down explicitly */
   height: 104vh;
   position: relative;
   background: var(--color-background);
@@ -15,36 +12,26 @@
   background-position: center;
   background-repeat: no-repeat;
   padding-left: 40px;
-  /* Keep horizontal alignment */
 }
 
 .contentWrapper {
   display: flex;
   flex-direction: row;
-  /* Keep SVG icon and text horizontally aligned */
   align-items: center;
-  /* Center vertically */
   gap: 20px;
-  /* Add space between SVG and text */
   max-width: 100%;
-  /* Ensure content does not exceed screen width */
   margin-top: auto;
-  /* Push content lower in the container */
   padding-top: 40px;
-  /* Optional: Add extra spacing above */
 }
 
 .scrollWrapper {
   flex-shrink: 0;
-  /* Prevent SVG from resizing */
 }
 
 .scrollIcon {
   display: block;
   animation: bounce 2s infinite;
-  /* Bounce animation */
   width: 40px;
-  /* Keep consistent icon size */
   height: 120px;
 }
 
@@ -70,11 +57,8 @@
 .textContent {
   display: flex;
   flex-direction: column;
-  /* Stack title and description vertically */
   align-items: flex-start;
-  /* Align text to the left */
   max-width: 600px;
-  /* Limit text width */
 }
 
 .title {
@@ -101,11 +85,18 @@
   justify-content: center;
 }
 
+.webgl {
+  width: 70%;
+  height: 70%;
+  position: absolute;
+  top: -4%;
+  left: 13%;
+}
+
 /* Responsive Styling */
 @media (max-width: 1200px) {
   .contentWrapper {
     margin-top: auto;
-    /* Keep content at the bottom */
     padding-top: 20px;
   }
 
@@ -119,15 +110,32 @@
 
   .threeDModelWrapper {
     width: 60%;
+    /* Slightly wider for medium screens */
     height: 40vh;
+    /* Reduce height */
   }
 }
 
 @media (max-width: 768px) {
+  .container {
+    align-items: center;
+  }
+
   .contentWrapper {
-    margin-top: auto;
-    padding-top: 50px;
-    /* Extra spacing for smaller screens */
+    flex-direction: row;
+    /* Keep SVG and text side by side */
+    align-items: flex-start;
+    /* Align content to the top */
+    gap: 10px;
+    /* Reduce space for smaller screens */
+    margin-top: 20px;
+    /* Adjust spacing */
+    text-align: center;
+    /* Center align text */
+  }
+
+  .textContent {
+    max-width: 100%;
   }
 
   .title {
@@ -140,15 +148,39 @@
 
   .threeDModelWrapper {
     width: 70%;
-    height: 35vh;
+    /* Increase width for smaller tablets */
+    height: 50vh;
+    /* Increase height */
+    margin-top: 20px;
+    /* Add spacing */
+  }
+
+  .webgl {
+    width: 70%;
+    height: 50%;
+    top: 0;
+    left: 15%;
   }
 }
 
 @media (max-width: 576px) {
+  .container {
+    align-items: center;
+    padding: 20px;
+  }
+
   .contentWrapper {
-    margin-top: auto;
-    padding-top: 80px;
-    /* Push lower on smallest screens */
+    flex-direction: row;
+    /* Maintain SVG and text side-by-side */
+    align-items: center;
+    text-align: left;
+    /* Avoid full center-align on smallest screens */
+    margin-top: 40px;
+  }
+
+  .textContent {
+    max-width: 90%;
+    text-align: left;
   }
 
   .title {
@@ -161,6 +193,17 @@
 
   .threeDModelWrapper {
     width: 90%;
-    height: 25vh;
+    /* Increase width for smaller mobile screens */
+    height: 60vh;
+    /* Increase height */
+    margin-top: 40px;
+    /* Push it further down */
+  }
+
+  .webgl {
+    width: 60%;
+    height: 40%;
+    top: 0;
+    left: 20%;
   }
 }

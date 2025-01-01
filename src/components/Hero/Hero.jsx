@@ -33,7 +33,7 @@ export const Hero = () => {
           </h1>
           <p className={styles.description}>
             I'm a full-stack developer currently part of the Energus graduate
-            scheme sponsored by Rolls-Royce.
+            scheme sponsored by Rolls-Royce
           </p>
         </div>
       </div>

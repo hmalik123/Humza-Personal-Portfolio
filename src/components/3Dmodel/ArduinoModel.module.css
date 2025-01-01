@@ -1,0 +1,28 @@
+.webgl {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    top: -4%;
+    left: 13%;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .webgl {
+        width: 80%;
+        height: 60%;
+        top: 10%;
+        /* Move the model lower for mobile phones */
+        left: 10%;
+    }
+}
+
+@media (max-width: 576px) {
+    .webgl {
+        width: 90%;
+        height: 50%;
+        top: 15%;
+        /* Move the model even lower for smaller mobile phones */
+        left: 5%;
+    }
+}
