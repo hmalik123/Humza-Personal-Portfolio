@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Hero.module.css";
+import ArduinoModel from "../3Dmodel/ArduinoModel";
 
 export const Hero = () => {
   return (
@@ -32,6 +33,9 @@ export const Hero = () => {
             scheme sponsored by Rolls-Royce.
           </p>
         </div>
+      </div>
+      <div className={styles.threeDModelWrapper}>
+        <ArduinoModel />
       </div>
       <div className={styles.topBlur} />
       <div className={styles.bottomBlur} />

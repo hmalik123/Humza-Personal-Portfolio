@@ -12,8 +12,10 @@
   "dependencies": {
     "@fontsource/outfit": "^5.0.8",
     "@fontsource/roboto": "^5.0.8",
+    "gsap": "^3.12.5",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "three": "^0.171.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
