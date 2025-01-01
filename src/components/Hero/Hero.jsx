@@ -5,7 +5,8 @@ import ArduinoModel from "../3Dmodel/ArduinoModel";
 export const Hero = () => {
   return (
     <section className={styles.container}>
-      <div className={styles.content}>
+      <div className={styles.contentWrapper}>
+        {/* Left Side: SVG Icon */}
         <div className={styles.scrollWrapper}>
           <svg
             className={styles.scrollIcon}
@@ -24,7 +25,9 @@ export const Hero = () => {
             />
           </svg>
         </div>
-        <div>
+
+        {/* Right Side: Text Content */}
+        <div className={styles.textContent}>
           <h1 className={styles.title}>
             Hi, I'm <span className={styles.highlight}>Humza</span>
           </h1>
@@ -34,6 +37,8 @@ export const Hero = () => {
           </p>
         </div>
       </div>
+
+      {/* 3D Model Section */}
       <div className={styles.threeDModelWrapper}>
         <ArduinoModel />
       </div>

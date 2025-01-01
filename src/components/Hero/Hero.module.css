@@ -1,54 +1,80 @@
-@import "../../vars.css";
-
 .container {
   display: flex;
-  flex-direction: row;
-  /* Align items horizontally */
-  align-items: center;
-  /* Center items vertically */
-  justify-content: space-between;
-  /* Space between items */
-  height: 100vh;
+  flex-direction: column;
+  /* Stack content vertically */
+  align-items: flex-start;
+  /* Align everything to the left */
+  justify-content: flex-start;
+  /* Push content down explicitly */
+  height: 104vh;
   position: relative;
   background: var(--color-background);
-  text-align: left;
   overflow: hidden;
-  background-image: url('../../assets/hero/HeroBackground.jpg');
+  background-image: url("../../assets/hero/HeroBackground.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-left: 40px;
+  /* Keep horizontal alignment */
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: row;
+  /* Keep SVG icon and text horizontally aligned */
+  align-items: center;
+  /* Center vertically */
+  gap: 20px;
+  /* Add space between SVG and text */
+  max-width: 100%;
+  /* Ensure content does not exceed screen width */
+  margin-top: auto;
+  /* Push content lower in the container */
+  padding-top: 40px;
+  /* Optional: Add extra spacing above */
 }
 
 .scrollWrapper {
   flex-shrink: 0;
-  margin-right: 20px;
+  /* Prevent SVG from resizing */
 }
 
 .scrollIcon {
   display: block;
+  animation: bounce 2s infinite;
+  /* Bounce animation */
+  width: 40px;
+  /* Keep consistent icon size */
+  height: 120px;
 }
 
-.content {
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.textContent {
   display: flex;
   flex-direction: column;
-  /* Stack elements vertically */
+  /* Stack title and description vertically */
   align-items: flex-start;
-  /* Align items to the left */
+  /* Align text to the left */
   max-width: 600px;
-  z-index: 2;
-  font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
-  margin-left: 20px;
-  /* Adjust margin as needed */
-}
-
-.threeDModelWrapper {
-  width: 50%;
-  /* Adjust width as needed */
-  height: 100%;
-  /* Adjust height as needed */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* Limit text width */
 }
 
 .title {
@@ -67,13 +93,22 @@
   font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
 }
 
-.highlight {
-  color: var(--color-primary);
-  /* Define your highlight color here */
+.threeDModelWrapper {
+  width: 50%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Media queries for responsiveness */
+/* Responsive Styling */
 @media (max-width: 1200px) {
+  .contentWrapper {
+    margin-top: auto;
+    /* Keep content at the bottom */
+    padding-top: 20px;
+  }
+
   .title {
     font-size: 48px;
   }
@@ -82,52 +117,40 @@
     font-size: 20px;
   }
 
-  .content {
-    margin-left: 10px;
-  }
-
   .threeDModelWrapper {
-    width: 20%;
+    width: 60%;
+    height: 40vh;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
+  .contentWrapper {
+    margin-top: auto;
+    padding-top: 50px;
+    /* Extra spacing for smaller screens */
+  }
+
   .title {
-    font-size: 40px;
+    font-size: 32px;
   }
 
   .description {
     font-size: 18px;
   }
 
-  .content {
-    margin-left: 5px;
-  }
-
   .threeDModelWrapper {
     width: 70%;
-  }
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 32px;
-  }
-
-  .description {
-    font-size: 16px;
-  }
-
-  .content {
-    margin-left: 5px;
-  }
-
-  .threeDModelWrapper {
-    width: 80%;
+    height: 35vh;
   }
 }
 
 @media (max-width: 576px) {
+  .contentWrapper {
+    margin-top: auto;
+    padding-top: 80px;
+    /* Push lower on smallest screens */
+  }
+
   .title {
     font-size: 24px;
   }
@@ -136,11 +159,8 @@
     font-size: 14px;
   }
 
-  .content {
-    margin-left: 5px;
-  }
-
   .threeDModelWrapper {
     width: 90%;
+    height: 25vh;
   }
 }
