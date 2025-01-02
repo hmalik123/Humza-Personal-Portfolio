@@ -1,0 +1,12 @@
+.skillModelContainer {
+  position: relative;
+  width: 150px;
+  /* Increase the size as needed */
+  height: 150px;
+  /* Increase the size as needed */
+}
+
+.webgl {
+  width: 100%;
+  height: 100%;
+}
