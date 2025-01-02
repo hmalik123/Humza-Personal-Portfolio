@@ -8,6 +8,9 @@ import styles from './ArduinoModel.module.css';
 
 const ArduinoModel = () => {
   const mountRef = useRef(null);
+  const isScrolling = useRef(false);
+  const resizeTimeout = useRef(null);
+  const scrollTimeout = useRef(null);
 
   useEffect(() => {
     const currentMount = mountRef.current;
@@ -40,24 +43,46 @@ const ArduinoModel = () => {
 
     // Resize handler to adjust model scale
     const handleResize = () => {
-      const width = currentMount.clientWidth;
-      const height = currentMount.clientHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
+      if (resizeTimeout.current) {
+        clearTimeout(resizeTimeout.current); // Clear previous resize timeout
+      }
+      resizeTimeout.current = setTimeout(() => {
+        const width = currentMount.clientWidth;
+        const height = currentMount.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
 
-      if (model) {
-        if (width < 576) {
-          model.scale.set(0.1, 0.1, 0.1); // Smaller scale for mobile screens
-        } else if (width < 768) {
-          model.scale.set(0.2, 0.2, 0.2); // Medium scale for tablets
-        } else if (width < 1024) {
-          model.scale.set(0.3, 0.3, 0.3); // Medium-large scale for small laptops
-        } else if (width < 1440) {
-          model.scale.set(0.35, 0.35, 0.35); // Large scale for larger laptops
-        } else {
-          model.scale.set(0.4, 0.4, 0.4); // Default scale for larger screens
+        if (model) {
+          if (width < 576) {
+            model.scale.set(0.1, 0.1, 0.1); // Smaller scale for mobile screens
+          } else if (width < 768) {
+            model.scale.set(0.2, 0.2, 0.2); // Medium scale for tablets
+          } else if (width < 1024) {
+            model.scale.set(0.3, 0.3, 0.3); // Medium-large scale for small laptops
+          } else if (width < 1440) {
+            model.scale.set(0.35, 0.35, 0.35); // Large scale for larger laptops
+          } else {
+            model.scale.set(0.4, 0.4, 0.4); // Default scale for larger screens
+          }
         }
+      }, 200); // Debounce resize with 200ms delay
+    };
+
+    // Mouse move handler to change model color
+    const handleMouseMove = (e) => {
+      if (model && model.children[0] && model.children[0].material && !isScrolling.current) {
+        const rgb = {
+          r: e.clientX / currentMount.clientWidth,
+          g: e.clientY / currentMount.clientHeight,
+          b: 1,
+        };
+        const newColor = new THREE.Color(rgb.r, rgb.g, rgb.b);
+        gsap.to(model.children[0].material.color, {
+          r: newColor.r,
+          g: newColor.g,
+          b: newColor.b,
+        });
       }
     };
 
@@ -66,25 +91,14 @@ const ArduinoModel = () => {
     const modelUrl = getImageUrl('hero/Arduino.gltf'); // Adjust the path as needed
     loader.load(modelUrl, (gltf) => {
       model = gltf.scene;
-      model.scale.set(0.4, 0.4, 0.4); // Adjust scale to a smaller value
-      model.position.set(0, -0.5, 0); // Adjust position to fit within the container
+      model.scale.set(0.4, 0.4, 0.4); // Adjust scale to a smaller value initially
+      model.position.set(0, -0.5, 0); // Ensure fixed position, no unexpected shifts
+      model.rotation.y = Math.PI; // Rotate the model to show the front
       scene.add(model);
 
       // GSAP animation for model load
       const tl = gsap.timeline({ defaults: { duration: 0.8 } });
       tl.fromTo(model.scale, { x: 0, y: 0, z: 0 }, { x: 0.08, y: 0.08, z: 0.08 });
-
-      const tl_title = gsap.timeline({ defaults: { duration: 5 } });
-      tl_title.fromTo(".title", { opacity: 0 }, { opacity: 1 });
-
-      // Color change animation on mousemove
-      const rgb = { r: 1, g: 1, b: 1 };
-      window.addEventListener("mousemove", (e) => {
-        rgb.r = e.clientX / currentMount.clientWidth;
-        rgb.g = e.clientY / currentMount.clientHeight;
-        const newColor = new THREE.Color(rgb.r, rgb.g, rgb.b);
-        gsap.to(model.children[0].material.color, { r: newColor.r, g: newColor.g, b: newColor.b });
-      });
 
       handleResize(); // Initial call to set the scale based on the initial size
     }, undefined, (error) => {
@@ -92,12 +106,33 @@ const ArduinoModel = () => {
     });
 
     window.addEventListener('resize', handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Handle scroll events (debounced)
+    const handleScrollStart = () => {
+      isScrolling.current = true;
+      controls.enabled = false; // Disable OrbitControls during scroll
+    };
+
+    const handleScrollEnd = () => {
+      isScrolling.current = false;
+      controls.enabled = true; // Re-enable OrbitControls after scroll
+    };
+
+    const handleScroll = () => {
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current); // Clear previous scroll timeout
+      }
+      scrollTimeout.current = setTimeout(handleScrollEnd, 100); // Delay scroll end handling
+    };
+
+    window.addEventListener('scroll', handleScrollStart);
+    window.addEventListener('scroll', handleScroll);
 
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 1);
     scene.add(ambientLight);
 
-    // Adjusted and additional directional lights for better illumination
     const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight1.position.set(1, 1, 1).normalize();
     scene.add(directionalLight1);
@@ -110,17 +145,24 @@ const ArduinoModel = () => {
     directionalLight3.position.set(0, -1, 1).normalize();
     scene.add(directionalLight3);
 
-    // Animation loop
-    const animate = () => {
+    // Animation loop with throttling
+    let lastFrameTime = 0;
+    const animate = (time) => {
+      if (time - lastFrameTime > 16) { // Throttle to ~60fps
+        controls.update();
+        renderer.render(scene, camera);
+        lastFrameTime = time;
+      }
       requestAnimationFrame(animate);
-      controls.update();
-      renderer.render(scene, camera);
     };
-    animate();
+    requestAnimationFrame(animate);
 
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('scroll', handleScrollStart);
+      window.removeEventListener('scroll', handleScroll);
       currentMount.removeChild(renderer.domElement);
     };
   }, []);

@@ -43,6 +43,56 @@
 
 .aboutItem p {
   font-size: 20px;
-  line-height: 1.6;
+  line-height: 1.8;
+  /* Increased line height */
   font-family: "Roboto", Arial, Helvetica, sans-serif;
+  margin: 15px 0;
+  /* Add margin to the paragraphs */
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 768px) {
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 30px;
+  }
+
+  .title {
+    font-size: 28px;
+    /* Further reduce font size for title */
+  }
+
+  .aboutItems {
+    max-width: 100%;
+    /* Make sure it uses full width */
+  }
+
+  .aboutItem p {
+    font-size: 14px;
+    /* Further reduce font size for paragraphs */
+    line-height: 1.6;
+    /* Adjust line height for smaller screens */
+    margin: 10px 0;
+    /* Adjust margin for smaller screens */
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+
+  .title {
+    font-size: 48px;
+  }
+
+  .aboutItems {
+    max-width: 800px;
+  }
+
+  .aboutItem p {
+    font-size: 22px;
+  }
 }

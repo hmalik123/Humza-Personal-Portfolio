@@ -1,3 +1,7 @@
+@import "../../vars.css";
+/* Import Roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;800&display=swap');
+
 .container {
   display: flex;
   flex-direction: column;
@@ -184,11 +188,11 @@
   }
 
   .title {
-    font-size: 24px;
+    font-size: 44px;
   }
 
   .description {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .threeDModelWrapper {
