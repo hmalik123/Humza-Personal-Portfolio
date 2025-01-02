@@ -1,10 +1,17 @@
+@import "../../vars.css";
+
 .container {
   padding: 20px;
 }
 
 .title {
-  font-size: 2em;
-  margin-bottom: 20px;
+  color: var(--color-text);
+  font-size: 35px;
+  font-weight: 700;
+  letter-spacing: 1.75px;
+  text-transform: uppercase;
+  text-align: left;
+  margin-left: 5%;
 }
 
 .content {
@@ -13,30 +20,20 @@
   justify-content: space-between;
   gap: 20px;
   margin-left: 10%;
-  /* Shift the entire content to the right */
 }
 
 .skills {
+  width: 45%;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  width: 50%;
-  /* Adjust width as needed */
+  gap: 37px;
 }
 
 .skill {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.skill p {
-  font-size: 25px;
-  font-family: var(--font-roboto);
-  font-weight: 500;
-  margin-top: 10px;
-  color: #fff;
-  /* Set text color to white */
+  gap: 11px;
 }
 
 .skillImageContainer {
@@ -53,9 +50,60 @@
   width: 75px;
 }
 
+.skill p {
+  font-size: 25px;
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  color: #fff;
+}
+
+.history {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.historyItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 17px;
+  background: #19376d;
+  background: linear-gradient(90deg, #19376d 0%, rgba(25, 55, 109, 0) 100%);
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.historyItem img {
+  width: 50px;
+}
+
+.historyItemDetails {
+  font-family: var(--font-roboto);
+}
+
+.historyItemDetails h3 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.historyItemDetails p {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.historyItemDetails ul {
+  margin-top: 6px;
+  list-style-position: inside;
+  font-size: 25px;
+  list-style-type: disc;
+  margin-left: 17px;
+}
+
+/* Timeline Styles */
 .timeline {
   width: 45%;
-  /* Adjust width as needed */
   position: relative;
   padding: 20px 0;
   list-style: none;
@@ -135,7 +183,6 @@
     align-items: center;
     gap: 34px;
     margin-left: 0;
-    /* Reset margin for smaller screens */
   }
 
   .skills {
@@ -146,27 +193,77 @@
 
   .timeline {
     width: 100%;
-  }
-
-  .timelineContent {
-    width: 100%;
-    left: 0 !important;
-  }
-
-  .timelineItem::before {
-    left: 10%;
+    padding-left: 10%;
+    position: relative;
   }
 
   .timeline::before {
+    left: 5%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #c5c5c5;
+  }
+
+  .timelineItem::before {
+    left: 5%;
+    width: 15px;
+    height: 15px;
+    top: 10px;
+    background: #fff;
+    border: 2px solid #c5c5c5;
+    border-radius: 50%;
+  }
+
+  .timelineContent {
+    width: 90%;
     left: 10%;
+    padding: 15px;
+    background: #19376d;
+    border-radius: 10px;
+    color: #fff;
+  }
+
+  .timelineContent:nth-child(odd),
+  .timelineContent:nth-child(even) {
+    left: 10%;
+  }
+
+  .timelineLogo {
+    width: 40px;
+    margin-bottom: 8px;
+  }
+
+  .timelineDetails h3 {
+    font-size: 18px;
+  }
+
+  .timelineDetails p {
+    font-size: 14px;
+  }
+
+  .timelineDetails ul {
+    font-size: 12px;
+    margin-left: 15px;
   }
 }
 
 @media screen and (min-width: 831px) {
+  .skills {
+    margin-top: 20px; /* Push the first line of skills lower */
+    gap: 120px;
+  }
 
-  .skill.sql,
-  .skill.freecad {
-    margin-left: 170px;
-    /* Push these skills to the right */
+  .skill {
+    margin-bottom: 1px; /* Reduce the gap between the first and second line of skills */
+    
+  }
+
+  .skill.sql{
+    margin-left: 270px;
+  }
+
+  .skill.react {
+    margin-left: 0px; /* Push the React skill to the right */
   }
 }

@@ -4,23 +4,19 @@
     "imageSrc": "projects/Rasa Framework.png",
     "description": "Use Rasaframework I built a simple chatbot that can answer questions you have about cybersecurity attaks",
     "skills": ["Rasa", "Python", "NLP", "YAML"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "source": "https://github.com/hmalik123/SimpleRasaChatbot"
   },
   {
     "title": "Graph Generator",
     "imageSrc": "projects/Graphgenerator.png",
     "description": "A simple UI which allows the user to input in graph equation and it will return that graph in 2D",
-    "skills": ["Python", "HTML", "CSS"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "source": "https://github.com/hmalik123/GraphGenerator"
   },
   {
     "title": "Movies Website",
     "imageSrc": "projects/MovieProject.png",
     "description": "A project from my time at Sparta Global where I built a movie booking service website",
     "skills": ["MongoDB", "HTML", "CSS", "JavaScript", "Springboot", "Java"],
-    "demo": "https://www.example.com",
-    "source": "https://www.github.com"
+    "source": "https://github.com/hmalik123/SpartaMongoDbFinalProject"
   }
 ]

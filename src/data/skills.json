@@ -4,20 +4,8 @@
     "imageSrc": "skills/c++.png"
   },
   {
-    "title": "CSS",
-    "imageSrc": "skills/css.png"
-  },
-  {
-    "title": "Docker",
-    "imageSrc": "skills/docker.png"
-  },
-  {
     "title": "Flask",
     "imageSrc": "skills/flask.png"
-  },
-  {
-    "title": "HTML",
-    "imageSrc": "skills/html.png"
   },
   {
     "title": "Java",
@@ -36,15 +24,7 @@
     "imageSrc": "skills/react.png"
   },
   {
-    "title": "Spring Boot",
-    "imageSrc": "skills/springboot.png"
-  },
-  {
     "title": "SQL",
     "imageSrc": "skills/sql.png"
-  },
-  {
-    "title": "FreeCAD",
-    "imageSrc": "skills/freecad.png"
   }
 ]

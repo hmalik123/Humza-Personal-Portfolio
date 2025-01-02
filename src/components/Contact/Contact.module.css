@@ -3,62 +3,161 @@
 .container {
   color: var(--color-text);
   margin-top: 120px;
-  background-color: var(--color-secondary);
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
   width: 100vw;
   padding: 58px 10%;
-  gap: 10px;
+  gap: 40px;
+}
+
+.text {
+  text-align: center;
 }
 
 .text h2 {
-  font-size: 80px;
+  font-size: 40px;
   font-weight: 700;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .text p {
-  font-size: 40px;
+  font-size: 20px;
   font-weight: 400;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+}
+
+.formContainer {
+  background-color: #0a1a3f;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.formGroup label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #0a1a3f;
+  color: #fff;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitButton:hover {
+  background-color: #0073e6;
+}
+
+.statusMessage {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1e90ff;
+  margin-top: 20px;
 }
 
 .links {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
   list-style: none;
-  gap: 26px;
 }
 
 .link {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 10px;
+}
+
+.link img {
+  width: 30px;
+  height: 30px;
 }
 
 .link a {
-  color: var(--color-text);
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
   text-decoration: none;
-  font-size: 30px;
-  font-weight: 400;
-  letter-spacing: 1.5px;
+  transition: color 0.3s;
+}
+
+.link a:hover {
+  color: #1e90ff;
 }
 
 @media screen and (max-width: 830px) {
   .container {
-    flex-direction: column;
-    gap: 23px;
+    padding: 40px 5%;
+    gap: 30px;
   }
 
-  .text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .text h2 {
+    font-size: 35px;
+  }
+
+  .text p {
+    font-size: 18px;
+  }
+
+  .formContainer {
+    padding: 30px;
   }
 
   .links {
+    flex-direction: column;
     align-items: center;
+  }
+
+  .link {
+    gap: 15px;
+  }
+
+  .link img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .link a {
+    font-size: 16px;
   }
 }
