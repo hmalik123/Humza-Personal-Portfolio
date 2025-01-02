@@ -12,36 +12,39 @@ export const Experience = () => {
       <div className={styles.content}>
         <div className={styles.skills}>
           {skills.map((skill, id) => {
+            const skillClass = skill.title.toLowerCase().replace(/\s+/g, '');
             return (
-              <div key={id} className={styles.skill}>
+              <div key={id} className={`${styles.skill} ${styles[skillClass]}`}>
                 <SkillModel imageSrc={skill.imageSrc} alt={skill.title} />
                 <p>{skill.title}</p>
               </div>
             );
           })}
         </div>
-        <ul className={styles.history}>
+        <div className={styles.timeline}>
           {history.map((historyItem, id) => {
             return (
-              <li key={id} className={styles.historyItem}>
-                <img
-                  src={getImageUrl(historyItem.imageSrc)}
-                  alt={`${historyItem.organisation} Logo`}
-                  className={styles.historyLogo}
-                />
-                <div className={styles.historyItemDetails}>
-                  <h3>{`${historyItem.role}, ${historyItem.organisation}`}</h3>
-                  <p>{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
-                  <ul>
-                    {historyItem.experiences.map((experience, expId) => {
-                      return <li key={expId}>{experience}</li>;
-                    })}
-                  </ul>
+              <div key={id} className={styles.timelineItem}>
+                <div className={styles.timelineContent}>
+                  <img
+                    src={getImageUrl(historyItem.imageSrc)}
+                    alt={`${historyItem.organisation} Logo`}
+                    className={styles.timelineLogo}
+                  />
+                  <div className={styles.timelineDetails}>
+                    <h3>{`${historyItem.role}, ${historyItem.organisation}`}</h3>
+                    <p>{`${historyItem.startDate} - ${historyItem.endDate}`}</p>
+                    <ul>
+                      {historyItem.experiences.map((experience, expId) => {
+                        return <li key={expId}>{experience}</li>;
+                      })}
+                    </ul>
+                  </div>
                 </div>
-              </li>
+              </div>
             );
           })}
-        </ul>
+        </div>
       </div>
     </section>
   );

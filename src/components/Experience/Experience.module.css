@@ -1,39 +1,42 @@
-@import "../../vars.css";
-
 .container {
-  color: var(--color-text);
-  margin-top: 79px;
-  margin-left: 10%;
-  margin-right: 10%;
+  padding: 20px;
 }
 
 .title {
-  color: var(--color-text);
-  font-size: 35px;
-  font-weight: 700;
-  letter-spacing: 1.75px;
-  text-transform: uppercase;
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
 .content {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  margin-top: 14px;
+  justify-content: space-between;
+  gap: 20px;
+  margin-left: 10%;
+  /* Shift the entire content to the right */
 }
 
 .skills {
-  width: 45%;
   display: flex;
   flex-wrap: wrap;
-  gap: 37px;
+  gap: 20px;
+  width: 50%;
+  /* Adjust width as needed */
 }
 
 .skill {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 11px;
+}
+
+.skill p {
+  font-size: 25px;
+  font-family: var(--font-roboto);
+  font-weight: 500;
+  margin-top: 10px;
+  color: #fff;
+  /* Set text color to white */
 }
 
 .skillImageContainer {
@@ -50,52 +53,78 @@
   width: 75px;
 }
 
-.skill p {
-  font-size: 25px;
-  font-family: var(--font-roboto);
-  font-weight: 500;
-}
-
-.history {
+.timeline {
   width: 45%;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  /* Adjust width as needed */
+  position: relative;
+  padding: 20px 0;
+  list-style: none;
 }
 
-.historyItem {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 17px;
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #c5c5c5;
+}
+
+.timelineItem {
+  position: relative;
+  margin: 20px 0;
+}
+
+.timelineItem::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border: 2px solid #c5c5c5;
+  border-radius: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.timelineContent {
+  position: relative;
+  width: 45%;
+  padding: 20px;
   background: #19376d;
-  background: linear-gradient(90deg, #19376d 0%, rgba(25, 55, 109, 0) 100%);
   border-radius: 10px;
-  padding: 24px;
+  color: #fff;
 }
 
-.historyItem img {
+.timelineContent:nth-child(odd) {
+  left: 0;
+}
+
+.timelineContent:nth-child(even) {
+  left: 55%;
+}
+
+.timelineLogo {
   width: 50px;
+  margin-bottom: 10px;
 }
 
-.historyItemDetails {
-  font-family: var(--font-roboto);
-}
-
-.historyItemDetails h3 {
-  font-size: 30px;
+.timelineDetails h3 {
+  font-size: 20px;
   font-weight: 500;
 }
 
-.historyItemDetails p {
-  font-size: 20px;
+.timelineDetails p {
+  font-size: 16px;
   font-weight: 300;
 }
 
-.historyItemDetails ul {
+.timelineDetails ul {
   margin-top: 6px;
   list-style-position: inside;
-  font-size: 25px;
+  font-size: 14px;
   list-style-type: disc;
   margin-left: 17px;
 }
@@ -105,6 +134,8 @@
     flex-direction: column;
     align-items: center;
     gap: 34px;
+    margin-left: 0;
+    /* Reset margin for smaller screens */
   }
 
   .skills {
@@ -113,8 +144,29 @@
     justify-content: center;
   }
 
-  .history {
+  .timeline {
     width: 100%;
-    gap: 9px;
+  }
+
+  .timelineContent {
+    width: 100%;
+    left: 0 !important;
+  }
+
+  .timelineItem::before {
+    left: 10%;
+  }
+
+  .timeline::before {
+    left: 10%;
+  }
+}
+
+@media screen and (min-width: 831px) {
+
+  .skill.sql,
+  .skill.freecad {
+    margin-left: 170px;
+    /* Push these skills to the right */
   }
 }
