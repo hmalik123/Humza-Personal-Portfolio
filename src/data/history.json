@@ -4,7 +4,7 @@
     "organisation": "Brunel University London",
     "startDate": "Sept, 2019",
     "endDate": "Sept, 2022",
-    "experiences": ["Web development", "Data structures and algorithms", "Machine learning"],
+    "experiences": ["Cybersecurity", "Networking"," Artificial Intelligence", "Algorithms & Their Application", "Microservices"],
     "imageSrc": "history/brunel.png"
   },
   {
@@ -12,7 +12,7 @@
     "organisation": "Sparta Global",
     "startDate": "Jan, 2023",
     "endDate": "June, 2023",
-    "experiences": ["Java Backend using Springboot", "Fron-end Javascript, HTML, CSS", "Weekly programming exams to be client ready"],
+    "experiences": ["Weekly programming exams during training", "Version Control - Git","Java | Javascript | HTML | CSS | SQL"],
     "imageSrc": "history/Sparta Global.png"
   },
   {
@@ -20,10 +20,7 @@
     "organisation": "Energus (Graduate Scheme with Rolls-Royce)",
     "startDate": "Sept, 2023",
     "endDate": "ongoing",
-    "experiences": [
-      "Worked on component library",
-      "Helped create UI components"
-    ],
+    "experiences": ["RR SMR | Project Management","RR Submarines | Front-end & IBM Cognos", "RR Future Tech | Full Stack & AI reserach"],
     "imageSrc": "history/Rolls Royce.png"
   }
 ]
